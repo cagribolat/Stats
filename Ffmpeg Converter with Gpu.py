@@ -33,27 +33,27 @@ def convert_video():
 
 # Dosya seçme fonksiyonu
 def select_input_file():
-    file_path = filedialog.askopenfilename(title="Giriş Dosyasını Seç", filetypes=(("MKV Files", "*.mkv"), ("All Files", "*.*")))
+    file_path = filedialog.askopenfilename(title="Select Input File", filetypes=(("MKV Files", "*.mkv"), ("All Files", "*.*")))
     entry_input.delete(0, tk.END)
     entry_input.insert(0, file_path)
 
 def select_output_file():
-    file_path = filedialog.asksaveasfilename(defaultextension=".mkv", title="Çıkış Dosyasını Seç", filetypes=(("MKV Files", "*.mkv"), ("All Files", "*.*")))
+    file_path = filedialog.asksaveasfilename(defaultextension=".mkv", title="Select Output File", filetypes=(("MKV Files", "*.mkv"), ("All Files", "*.*")))
     entry_output.delete(0, tk.END)
     entry_output.insert(0, file_path)
 
 # Ana pencere
 root = tk.Tk()
-root.title("Video Dönüştürme Aracı")
+root.title("FFmpeg Video Converter ")
 root.geometry("500x400")
 root.config(bg="#2d2d2d")
 
 # Başlık
-label_title = tk.Label(root, text="FFmpeg Video Dönüştürücü", font=("Arial", 16, "bold"), fg="white", bg="#2d2d2d")
+label_title = tk.Label(root, text=" ", font=("Arial", 16, "bold"), fg="white", bg="#2d2d2d")
 label_title.pack(pady=10)
 
 # Giriş dosyası için etiket ve kutu
-label_input = tk.Label(root, text="Giriş Dosyasını Seç:", font=("Arial", 12), fg="white", bg="#2d2d2d")
+label_input = tk.Label(root, text="Select Input File:", font=("Arial", 12), fg="white", bg="#2d2d2d")
 label_input.pack(pady=5)
 entry_input = tk.Entry(root, width=50, font=("Arial", 10))
 entry_input.pack(pady=5)
@@ -61,7 +61,7 @@ button_browse_input = tk.Button(root, text="Dosya Seç", command=select_input_fi
 button_browse_input.pack(pady=5)
 
 # Çıkış dosyası için etiket ve kutu
-label_output = tk.Label(root, text="Çıkış Dosyasını Seç:", font=("Arial", 12), fg="white", bg="#2d2d2d")
+label_output = tk.Label(root, text="Select output location:", font=("Arial", 12), fg="white", bg="#2d2d2d")
 label_output.pack(pady=5)
 entry_output = tk.Entry(root, width=50, font=("Arial", 10))
 entry_output.pack(pady=5)
@@ -69,7 +69,7 @@ button_browse_output = tk.Button(root, text="Dosya Seç", command=select_output_
 button_browse_output.pack(pady=5)
 
 # CRF seçici (kaydırıcı)
-label_crf = tk.Label(root, text="CRF Değeri (Video Kalitesi):", font=("Arial", 12), fg="white", bg="#2d2d2d")
+label_crf = tk.Label(root, text="CRF Rating (Video Quality):", font=("Arial", 12), fg="white", bg="#2d2d2d")
 label_crf.pack(pady=5)
 crf_slider = tk.Scale(root, from_=0, to_=51, orient="horizontal", length=400, tickinterval=10, sliderlength=15)
 crf_slider.set(28)  # Varsayılan CRF değeri
@@ -83,7 +83,7 @@ bitrate_slider.set(1500)  # Varsayılan bitrate değeri
 bitrate_slider.pack(pady=5)
 
 # Dönüştürme butonu
-button_convert = tk.Button(root, text="Dönüştür", command=convert_video, bg="#008CBA", fg="white", font=("Arial", 12, "bold"))
+button_convert = tk.Button(root, text="Convert", command=convert_video, bg="#008CBA", fg="white", font=("Arial", 12, "bold"))
 button_convert.pack(pady=20)
 
 # Durum etiketi
